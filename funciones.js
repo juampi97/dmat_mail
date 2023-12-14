@@ -25,7 +25,7 @@ export const generarListadoHtml = (listado_articulos) => {
   html += `
         </tr>
     </table>`;
-  generararExcel(listado_articulos)
+  // generararExcel(listado_articulos)
   return html;
 };
 
