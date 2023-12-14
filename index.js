@@ -7,14 +7,14 @@ import axios from "axios";
 import { generarListadoHtml, generararExcel } from './funciones.js'
 
 const app = express();
-// app.use(cors());
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  cors()
-  next();
-})
+app.use(cors());
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+//   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+//   cors()
+//   next();
+// })
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -118,6 +118,7 @@ app.post("/mail", async (req, res) => {
 });
 
 app.post("/pedido", async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");  
   console.log(req.body);
   const { usuario, listado_articulos, captcha } = req.body;
   const html = generarListadoHtml(listado_articulos)
