@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 import axios from "axios";
 
+import { generarListadoHtml, generararExcel } from './funciones.js'
+
 const app = express();
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
@@ -38,7 +40,20 @@ app.get("/", (req, res) => {
 
 app.post("/mail", async (req, res) => {
   console.log(req.body);
-  const { nombre, empresa, provincia, localidad, direccion, telefono, email, codigo, producto, vendedor, mensaje, captcha } = req.body;
+  const {
+    nombre,
+    empresa,
+    provincia,
+    localidad,
+    direccion,
+    telefono,
+    email,
+    codigo,
+    producto,
+    vendedor,
+    mensaje,
+    captcha,
+  } = req.body;
 
   if (!captcha) {
     res
@@ -76,9 +91,15 @@ app.post("/mail", async (req, res) => {
         `,
           attachments: [],
         });
-        res.status(200).json({ status: "ok", mensaje: 'Mensaje Enviado!' });
+        res.status(200).json({ status: "ok", mensaje: "Mensaje Enviado!" });
       } catch (error) {
-        res.status(400).json({ status: "error", mensaje: 'Error al enviar el mensaje. Intenta nuevamente mas tarde.' });
+        res
+          .status(400)
+          .json({
+            status: "error",
+            mensaje:
+              "Error al enviar el mensaje. Intenta nuevamente mas tarde.",
+          });
       }
     } else {
       return res.json({
@@ -91,7 +112,9 @@ app.post("/mail", async (req, res) => {
 
 app.post("/pedido", async (req, res) => {
   console.log(req.body);
-  const { usuario, listado_articulos, captcha } = req.body; 
+  const { usuario, listado_articulos, captcha } = req.body;
+  const html = generarListadoHtml(listado_articulos)
+  const pathArchivo = generararExcel(listado_articulos)
 
   if (!captcha) {
     res
@@ -107,7 +130,6 @@ app.post("/pedido", async (req, res) => {
   }).then(({ data }) => {
     // console.log(data.success);
     if (data.success) {
-      /*
       try {
         let result = transport.sendMail({
           from: `"DMAT" <${process.env.APP_USER}>`,
@@ -115,16 +137,26 @@ app.post("/pedido", async (req, res) => {
           subject: "Solicitud cotización sitio Dmat",
           html: `
         <div>
-          // Tabla
+          ${html}
         </div>
         `,
-          attachments: [],
+          attachments: [{
+            filename:'',
+            path:pathArchivo,
+            cid:''
+          }],
+          // attachments: [],
         });
-        res.status(200).json({ status: "ok", mensaje: 'Mensaje Enviado!' });
+        res.status(200).json({ status: "ok", mensaje: "Solicitud de cotizacion realizada!" });
       } catch (error) {
-        res.status(400).json({ status: "error", mensaje: 'Error al enviar el mensaje. Intenta nuevamente mas tarde.' });
+        res
+          .status(400)
+          .json({
+            status: "error",
+            mensaje:
+              "Error al completar la solicitud de pedido. Intenta nuevamente mas tarde.",
+          });
       }
-      */
     } else {
       return res.json({
         status: "error",

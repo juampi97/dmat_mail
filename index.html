@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template Tabla</title>
+  </head>
+  <body>
+    <table style="text-align: center;">
+      <tr style="background-color: rgba(0, 0, 177, 0.5); border-bottom: solid 5px; border-color:rgba(0, 0, 128, 0.8)">
+        <th style="padding: 10px;">PRODUCTO</th>
+        <th style="padding: 10px;">BANDA</th>
+        <th style="padding: 10px;">MINIMO</th>
+        <th style="padding: 10px;">MAXIMO</th>
+        <th style="padding: 10px;">CANTIDAD</th>
+      </tr>
+      <tr>
+        <td style="padding: 8px;">${item.producto}</td>
+        <td style="padding: 8px;">${item.banda}</td>
+        <td style="padding: 8px;">${item.min}</td>
+        <td style="padding: 8px;">${item.max}</td>
+        <td style="padding: 8px;">${item.cantidad}</td>
+      </tr>
+    </table>
+  </body>
+</html>
