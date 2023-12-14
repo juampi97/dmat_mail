@@ -117,8 +117,14 @@ app.post("/mail", async (req, res) => {
   });
 });
 
+app.options("/pedido", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  res.sendStatus(204);
+});
+
 app.post("/pedido", async (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");  
   console.log(req.body);
   const { usuario, listado_articulos, captcha } = req.body;
   const html = generarListadoHtml(listado_articulos)
