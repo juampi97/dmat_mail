@@ -114,7 +114,7 @@ app.post("/pedido", async (req, res) => {
   console.log(req.body);
   const { usuario, listado_articulos, captcha } = req.body;
   const html = generarListadoHtml(listado_articulos)
-  const pathArchivo = generararExcel(listado_articulos)
+  // const pathArchivo = generararExcel(listado_articulos)
 
   if (!captcha) {
     res
@@ -140,12 +140,12 @@ app.post("/pedido", async (req, res) => {
           ${html}
         </div>
         `,
-          attachments: [{
-            filename:'',
-            path:pathArchivo,
-            cid:''
-          }],
-          // attachments: [],
+          // attachments: [{
+          //   filename:'',
+          //   path:pathArchivo,
+          //   cid:''
+          // }],
+          attachments: [],
         });
         res.status(200).json({ status: "ok", mensaje: "Solicitud de cotizacion realizada!" });
       } catch (error) {
