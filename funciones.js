@@ -1,6 +1,5 @@
 import * as xl from "excel4node";
 
-
 export const generarListadoHtml = (listado_articulos) => {
   let html = `
   <table id="tabla" style="text-align: center;">

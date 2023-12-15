@@ -7,10 +7,10 @@ import axios from "axios";
 import { generarListadoHtml, generararExcel } from './funciones.js'
 
 const app = express();
-// app.use(cors());
-app.use(cors({
-  origin: ['127.0.0.1','127.0.0.1:5500','localhost']
-}));
+app.use(cors());
+// app.use(cors({
+//   origin: ['127.0.0.1','127.0.0.1:5500','localhost']
+// }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -147,15 +147,16 @@ app.post("/pedido", async (req, res) => {
           subject: "Solicitud cotización sitio Dmat",
           html: `
         <div>
+          <p>Se solicita la siguiente cotización:</p>
           ${html}
         </div>
         `,
-           attachments: [{
-             filename:'',
-             path:pathArchivo,
-             cid:''
-           }],
-          // attachments: [],
+          //  attachments: [{
+          //    filename:'',
+          //    path:pathArchivo,
+          //    cid:''
+          //  }],
+          attachments: [],
         });
         res.status(200).json({ status: "ok", mensaje: "Solicitud de cotizacion realizada!" });
       } catch (error) {
