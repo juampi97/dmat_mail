@@ -114,8 +114,8 @@ app.post("/mail", async (req, res) => {
 });
 
 app.post("/pedido", async (req, res) => {
-  console.log(req.body);
-  const { usuario, listado_articulos, captcha } = req.body;
+  // console.log(req.body);
+  const { nombre, email, empresa, cuit, listado_articulos, captcha } = req.body;
   const html = generarListadoHtml(listado_articulos)
   //  const pathArchivo = generararExcel(listado_articulos)
 
@@ -131,7 +131,6 @@ app.post("/pedido", async (req, res) => {
     url: verifyUrl,
     method: "POST",
   }).then(({ data }) => {
-    // console.log(data.success);
     if (data.success) {
       try {
         let result = transport.sendMail({
@@ -140,8 +139,13 @@ app.post("/pedido", async (req, res) => {
           subject: "Solicitud cotización sitio Dmat",
           html: `
         <div>
+          <p><strong>Cliente</strong>: ${nombre}</p>
+          <p><strong>Email</strong>: ${email}</p>
+          <p><strong>Empresa</strong>: ${empresa}</p>
+          <p><strong>Cuit</strong>: ${cuit}</p>
           <p>Se solicita la siguiente cotización:</p>
           ${html}
+          <br/>
         </div>
         `,
           //  attachments: [{
