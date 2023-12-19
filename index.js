@@ -42,7 +42,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/mail", async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const {
     nombre,
     empresa,
@@ -54,7 +54,7 @@ app.post("/mail", async (req, res) => {
     codigo,
     producto,
     vendedor,
-    mensaje,
+    Mensaje,
     captcha,
   } = req.body;
 
@@ -89,7 +89,7 @@ app.post("/mail", async (req, res) => {
             <p> Codigo: ${codigo}</p>
             <p> Producto: ${producto}</p>
             <p> Vendedor: ${vendedor}</p>
-            <p> Mensaje: ${mensaje}</p>
+            <p> Mensaje: ${Mensaje}</p>
         </div>
         `,
           attachments: [],
