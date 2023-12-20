@@ -79,17 +79,17 @@ app.post("/mail", async (req, res) => {
           subject: "Solicitud cotización sitio Dmat",
           html: `
         <div>
-            <p> Nombre: ${nombre}</p>
-            <p> Empresa: ${empresa}</p>
-            <p> Provincia: ${provincia}</p>
-            <p> Localidad: ${localidad}</p>
-            <p> Direccion: ${direccion}</p>
-            <p> Telefono: ${telefono}</p>
-            <p> Email: ${email}</p>
-            <p> Codigo: ${codigo}</p>
-            <p> Producto: ${producto}</p>
-            <p> Vendedor: ${vendedor}</p>
-            <p> Mensaje: ${Mensaje}</p>
+            <p> <strong>Nombre</strong>: ${nombre}</p>
+            <p> <strong>Empresa</strong>: ${empresa}</p>
+            <p> <strong>Provincia</strong>: ${provincia}</p>
+            <p> <strong>Localidad</strong>: ${localidad}</p>
+            <p> <strong>Direccion</strong>: ${direccion}</p>
+            <p> <strong>Telefono</strong>: ${telefono}</p>
+            <p> <strong>Email</strong>: ${email}</p>
+            <p> <strong>Codigo</strong>: ${codigo}</p>
+            <p> <strong>Producto</strong>: ${producto}</p>
+            <p> <strong>Vendedor</strong>: ${vendedor}</p>
+            <p> <strong>Mensaje</strong>: ${Mensaje}</p>
         </div>
         `,
           attachments: [],
