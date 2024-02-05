@@ -42,7 +42,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/mail", async (req, res) => {
-  // console.log(req.body);
+  console.log(req.body);
   const {
     nombre,
     empresa,
@@ -57,7 +57,6 @@ app.post("/mail", async (req, res) => {
     Mensaje,
     captcha,
   } = req.body;
-
   if (!captcha) {
     res
       .status(400)
@@ -76,20 +75,21 @@ app.post("/mail", async (req, res) => {
         let result = transport.sendMail({
           from: `"DMAT" <${process.env.APP_USER}>`,
           to: "juampicalabro97@gmail.com",
+          // to: "ventas@dmat.com.ar",
           subject: "Solicitud cotización sitio Dmat",
           html: `
         <div>
-            <p> <strong>Nombre</strong>: ${nombre}</p>
-            <p> <strong>Empresa</strong>: ${empresa}</p>
-            <p> <strong>Provincia</strong>: ${provincia}</p>
-            <p> <strong>Localidad</strong>: ${localidad}</p>
-            <p> <strong>Direccion</strong>: ${direccion}</p>
-            <p> <strong>Telefono</strong>: ${telefono}</p>
-            <p> <strong>Email</strong>: ${email}</p>
-            <p> <strong>Codigo</strong>: ${codigo}</p>
-            <p> <strong>Producto</strong>: ${producto}</p>
-            <p> <strong>Vendedor</strong>: ${vendedor}</p>
-            <p> <strong>Mensaje</strong>: ${Mensaje}</p>
+        <p> <strong>Nombre</strong>: ${nombre}</p>
+        <p> <strong>Empresa</strong>: ${empresa}</p>
+        <p> <strong>Provincia</strong>: ${provincia}</p>
+        <p> <strong>Localidad</strong>: ${localidad}</p>
+        <p> <strong>Direccion</strong>: ${direccion}</p>
+        <p> <strong>Telefono</strong>: ${telefono}</p>
+        <p> <strong>Email</strong>: ${email}</p>
+        <p> <strong>Codigo</strong>: ${codigo}</p>
+        <p> <strong>Producto</strong>: ${producto}</p>
+        <p> <strong>Vendedor</strong>: ${vendedor}</p>
+        <p> <strong>Mensaje</strong>: ${Mensaje}</p>
         </div>
         `,
           attachments: [],
