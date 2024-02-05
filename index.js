@@ -42,7 +42,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/mail", async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const {
     nombre,
     empresa,
