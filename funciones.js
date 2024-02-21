@@ -5,6 +5,11 @@ export const generarListadoHtml = (listado_articulos) => {
   <table id="tabla" style="text-align: center;">
     <tr style="background-color: rgba(0, 0, 177, 0.5); border-bottom: solid 5px; border-color:rgba(0, 0, 128, 0.8)">
         <th style="padding: 10px;">PRODUCTO</th>
+        <th style="padding: 10px;">CODIGO</th>
+        <th style="padding: 10px;">DESCRIPCION</th>
+        <th style="padding: 10px;">DIMENSION</th>
+        <th style="padding: 10px;">LARGO</th>
+        <th style="padding: 10px;">ANCHO</th>
         <th style="padding: 10px;">BANDA</th>
         <th style="padding: 10px;">MINIMO</th>
         <th style="padding: 10px;">MAXIMO</th>
@@ -14,6 +19,11 @@ export const generarListadoHtml = (listado_articulos) => {
     html += `
     <tr>
         <td style="padding: 8px;">${item.producto}</td>
+        <td style="padding: 8px;">${item.codigo}</td>
+        <td style="padding: 8px;">${item.descripcion}</td>
+        <td style="padding: 8px;">${item.dimension}</td>
+        <td style="padding: 8px;">${item.largo}</td>
+        <td style="padding: 8px;">${item.ancho}</td>
         <td style="padding: 8px;">${item.banda}</td>
         <td style="padding: 8px;">${item.min}</td>
         <td style="padding: 8px;">${item.max}</td>
