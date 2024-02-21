@@ -135,7 +135,8 @@ app.post("/pedido", async (req, res) => {
       try {
         let result = transport.sendMail({
           from: `"DMAT" <${process.env.APP_USER}>`,
-          to: "juampicalabro97@gmail.com",
+          // to: "juampicalabro97@gmail.com",
+          to: "ventas@dmat.com.ar",
           subject: "Solicitud cotización sitio Dmat",
           html: `
         <div>
